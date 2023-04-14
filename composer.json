@@ -1,0 +1,7 @@
+{
+  "require": {
+    "phpmailer/phpmailer": "^6.6",
+    "gumlet/php-image-resize" : " 2.0.* ",
+    "ifsnop/mysqldump-php": "v2.10"
+  }
+}

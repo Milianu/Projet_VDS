@@ -1,0 +1,80 @@
+Options -Indexes
+ErrorDocument 404 /erreur/404.php
+
+# Rappel des codes erreurs
+# Codes de statut 200
+# C’est le meilleur type de code de statut HTTP à recevoir. Une réponse de niveau 200 signifie que tout fonctionne exactement comme il se doit.
+
+# 200 : « Everything is OK ». Il s’agit du code qui est délivré lorsqu’une page web ou une ressource se comporte exactement comme prévu.
+# 201 : « Created ». Le serveur a répondu à la requête du navigateur et a donc créé une nouvelle ressource.
+# 202 : « Accepted ». Le serveur a accepté la requête de votre navigateur mais la traite encore. La demande peut finalement aboutir ou non à une réponse complète.
+# 203 : « Non-Authoritative Information ». Ce code de statut peut apparaître lorsqu’un proxy est utilisé. Cela signifie que le serveur proxy a reçu du serveur d’origine un code de statut 200 « Everything is OK », mais qu’il a modifié la réponse avant de la transmettre à votre navigateur.
+# 204 : « No Content ». Ce code signifie que le serveur a bien traité la requête, mais qu’il ne retournera aucun contenu.
+# 205 : « Reset Content ». Comme un code 204, cela signifie que le serveur a traité la requête mais ne va pas renvoyer de contenu. Cependant, il faut également que votre navigateur réinitialise l’affichage du document.
+# 206 : « Partial Content ». Vous pouvez voir ce code de statut si votre client HTTP (également appelé votre navigateur) utilise des « en-têtes de plage ». Cela permet à votre navigateur de reprendre les téléchargements en pause, ainsi que de diviser un téléchargement en plusieurs flux. Un code 206 est envoyé lorsqu’un en-tête de plage fait que le serveur n’envoie qu’une partie de la ressource demandée.
+# Codes de statut 300
+# La redirection est le processus utilisé pour communiquer qu’une ressource a été déplacée vers un nouveau lieu. Plusieurs codes de statut HTTP accompagnent les redirections, afin de fournir aux visiteurs des informations sur l’endroit où trouver le contenu qu’ils recherchent.
+
+# 300 : « Multiple Choices ». Parfois, il peut y avoir plusieurs ressources possibles avec lesquelles le serveur peut répondre pour satisfaire la demande de votre navigateur. Un code de statut 300 signifie que votre navigateur doit maintenant choisir entre les deux. Cela peut se produire lorsque plusieurs extensions de type de fichier sont disponibles, ou si le serveur subit une clarification du sens des mots.
+# 301 : « The requested resource has been moved permanently ». Ce code est délivré lorsqu’une page web ou une ressource a été remplacée de manière permanente par une autre ressource. Il est utilisé pour les redirection d’URL.
+# 302 : « The requested resource has moved but was found » Ce code est utilisé pour indiquer que la ressource demandée a été trouvée, mais pas à l’endroit où elle était attendue. Il est utilisé pour la redirection temporaire d’URL.
+# 303 : « See Other ». Pour comprendre un code de statut 303, il faut connaître la différence entre les quatre principales méthodes de requête HTTP. Essentiellement, un code 303 indique à votre navigateur qu’il a trouvé la ressource demandée par l’intermédiaire de POST, PUT ou DELETE. Toutefois, pour le récupérer via GET, vous devez faire la requête appropriée pour une URL différente de celle que vous avez utilisée précédemment.
+# 304 : « The requested resource has not been modified since the last time you accessed it ». Ce code indique au navigateur que les ressources stockées dans le cache du navigateur n’ont pas changé. Il est utilisé pour accélérer la livraison des pages web en réutilisant les ressources précédemment téléchargées.
+# 307 : « Temporary Redirect ». Ce code de statut a remplacé le 302 « Found » comme action appropriée lorsqu’une ressource a été temporairement déplacée vers une autre URL. Contrairement au code d’état 302, il ne permet pas de modifier la méthode HTTP.
+# 308 : « Permanent Redirect ». Le code de statut 308 est le successeur du code 301 « Moved Permanently ». Il ne permet pas de modifier la méthode HTTP et indique que la ressource demandée est désormais située de façon permanente sur une nouvelle URL.
+# Codes de statut 400
+# Au niveau 400, les codes de statut HTTP commencent à poser problème. Il s’agit de codes d’erreur indiquant qu’il y a un problème avec votre navigateur et/ou votre requête.
+
+# 400 : « Bad Request ». Le serveur ne peut pas renvoyer de réponse en raison d’une erreur du côté du client. Voir notre guide pour la résolution de cette erreur.
+# 401 : « Unauthorized » ou « Authorization Required ». Il est renvoyé par le serveur lorsque la ressource cible ne possède pas de justificatifs d’authentification valides. Vous pouvez le constater si vous avez mis en place une authentification HTTP de base en utilisant htpasswd.
+# Erreur 401 d’autorisation Nginx nécessaire dans Chrome
+# Erreur 401 d’autorisation Nginx nécessaire dans Chrome
+# 402 : « Payment required » À l’origine, ce code a été créé pour être utilisé dans le cadre d’un système de caisse numérique. Cependant, ce plan n’a jamais abouti. Il est plutôt utilisé par diverses plateformes pour indiquer qu’une requête ne peut être satisfaite, généralement en raison d’un manque de fonds nécessaires. Parmi les exemples les plus courants, on peut citer
+# Vous avez atteint votre limite de requêtes quotidienne sur API de Google pour les développeurs.
+# Vous n’avez pas payé votre Les frais de Shopify et votre boutique a été temporairement désactivée.
+# Votre paiement via Stripe a échoué, ou Stripe essaie d’empêcher un paiement frauduleux.
+# 403 : « Access to that resource is forbidden ». Ce code est renvoyé lorsqu’un utilisateur tente d’accéder à quelque chose qu’il n’a pas la permission de voir. Par exemple, essayer d’accéder à un contenu protégé par un mot de passe sans se connecter peut produire une erreur 403.
+# 404 : « The requested resource was not found ». C’est le message d’erreur le plus courant de tous. Ce code signifie que la ressource demandée n’existe pas, et le serveur ne sait pas si elle a déjà existé.
+# 405 : « Method not allowed ». Cela est généré lorsque le serveur d’hébergement (serveur d’origine) prend en charge la méthode reçue, mais pas la ressource cible.
+# 406 : « Not acceptable response ». La ressource demandée est capable de générer uniquement du contenu qui n’est pas acceptable selon les en-têtes d’acceptation envoyés dans la requête.
+# 407 : « Proxy Authentification Required ». Un serveur proxy est utilisé et exige que votre navigateur s’authentifie avant de continuer.
+# 408 : « The server timed out waiting for the rest of the request from the browser». Ce code est généré lorsqu’un serveur s’arrête en attendant la requête complète du navigateur. En d’autres termes, le serveur n’a pas reçu la requête complète envoyée par le navigateur. Une des causes possibles pourrait être une congestion entraînant la perte de paquets de données entre le navigateur et le serveur.
+# 409 : « Conflict ». Un code d’état 409 signifie que le serveur n’a pas pu traiter la requête de votre navigateur parce qu’il y a un conflit avec la ressource concernée. Cela se produit parfois en raison de multiples modifications simultanées.
+# 410 : « The requested resource is gone and won’t be coming back ». Ce code est similaire au code 404 « Non trouvé », sauf que le code 410 indique que l’état est attendu et permanent.
+# 411 : « Length Required ». Cela signifie que la ressource demandée exige que le client spécifie une certaine longueur et qu’il ne l’a pas fait.
+# 412 : « Precondition Failed ». Votre navigateur incluait certaines conditions dans ses en-têtes de requête, et le serveur ne répondait pas à ces spécifications.
+# 413 : « Payload Too Large » ou « Request Entity Too Large ». Votre demande est plus importante que le serveur ne veut ou ne peut la traiter.
+# 414 : « URI Too Long ». C’est généralement le résultat d’une requête GET qui a été encodée comme une chaîne de requête trop grande pour que le serveur puisse la traiter.
+# 415 : « Unsupported Media Type ». La requête comprend un type de média que le serveur ou la ressource ne prend pas en charge.
+# 416 : « Range Not Satisfiable ». Votre requête concernait une partie d’une ressource que le serveur ne peut pas retourner.
+# 417 : « Expectation Failed ». Le serveur n’est pas en mesure de répondre aux exigences spécifiées dans le champ d’en-tête attendu de la requête.
+# 418 : « I’m a teapot ». » Ce code est renvoyé par les théières qui reçoivent des demandes de brassage de café. C’est aussi un poisson d’Avril de 1998.
+# Code de statut 418 « I’m a teapot »
+# Code de statut 418 « I’m a teapot »
+# 422 : « Unprocessable Entity ». La requête du client contient des erreurs sémantiques, et le serveur ne peut pas la traiter.
+# 425 : « Too Early ». Ce code est envoyé lorsque le serveur ne veut pas traiter une requête parce qu’elle peut être rejouée.
+# 426 : « Upgrade Required ». En raison du contenu du champ de l’en-tête de la demande de mise à niveau, le client doit passer à un protocole différent.
+# 428 : « Precondition Required ». Le serveur exige que des conditions soient spécifiées avant de traiter la requête.
+# 429 : « Too many request ». Cela est généré par le serveur lorsque l’utilisateur a envoyé trop de requêtes dans un laps de temps donné. Cela peut parfois être dû à des robots ou des scripts qui tentent d’accéder à votre site.
+# 429 too many requests
+# 429 too many requests
+# 431 : « Request Header Fields Too Large ». Le serveur ne peut pas traiter la requête car les champs d’en-tête sont trop grands. Cela peut indiquer un problème avec un seul champ d’en-tête, ou avec tous.
+# 451 : « Unavailable for Legal Reasons » L’opérateur du serveur a reçu une demande d’interdiction d’accès à la ressource que vous avez demandée (ou à un ensemble de ressources comprenant celle que vous avez demandée). Fait amusant : ce code est une référence au roman de Ray Bradbury Fahrenheit 451.
+# 499 : « Client closed request ». Cette information est renvoyée par NGINX lorsque le client ferme la requête alors que Nginx est toujours en train de la traiter.
+# Un code d’état HTTP vous empêche d’agir ? Nos experts WordPress se tiennent prêts. Essayez Kinsta gratuitement..
+#
+# Codes de statut 500
+# Les codes de statut de niveau 500 sont également considérés comme des erreurs. Cependant, ils indiquent que le problème se situe du côté du serveur. Cela peut les rendre plus difficiles à résoudre.
+#
+# 500 : « There was an error on the server and the request could not be completed ». Il s’agit d’un code générique qui signifie simplement « erreur interne du serveur ». Un problème est survenu sur le serveur et la ressource demandée n’a pas été fournie. Ce code est généralement généré par des extensions tierces, du PHP défectueux, ou même la connexion à la base de données qui se rompt. Consultez nos tutoriels sur la façon de corriger l’erreur d’établissement d’une connexion à la base de données et d’autres moyens de résoudre une erreur 500 interne du serveur.
+# Erreur lors de l'établissement d'une connexion à la base de données
+#
+# 501 : « Not implemented ». Cette erreur indique que le serveur ne prend pas en charge la fonctionnalité nécessaire pour répondre à la requête. Il s’agit presque toujours d’un problème sur le serveur web lui-même, qui doit généralement être résolu par l’hébergeur.
+# 502 : « Bad Gateway ». Ce code d’erreur signifie généralement qu’un serveur a reçu une réponse non valide d’un autre, par exemple lorsqu’un serveur proxy est utilisé. Dans d’autres cas, une requête ou une demande prend trop de temps et est donc annulée ou supprimée par le serveur et la connexion à la base de données est interrompue. Pour plus de détails, voir notre tutoriel approfondi sur la manière de régler l’erreur 502.
+# 503 : « The server is unavailable to handle this request right now ». La requête ne peut pas être complétée à ce stade. Ce code peut être renvoyé par un serveur surchargé qui n’est pas en mesure de traiter les requêtes supplémentaires. Nous disposons d’un guide complet sur la manière de réparer les erreurs 503.
+# 504 : « The server, acting as a gateway, timed out waiting for another server to respond ». Il s’agit du code renvoyé lorsque deux serveurs sont impliqués dans le traitement d’une requête et que le premier serveur attend la réponse du second. Vous pouvez en savoir plus sur comment corriger les erreurs 504 dans notre guide dédié.
+# 505 : « HTTP Version Not Supported ». Le serveur ne prend pas en charge la version HTTP que le client a utilisée pour effectuer la requête.
+# 508 : « La limite de ressource est atteinte » Les limites de ressources fixées par votre hébergeur web ont été atteintes. Consultez notre tutoriel sur la façon de résoudre l’erreur « La limite de ressource est atteinte ».
+# 511 : « Network Authentification Required ». Ce code de statut est envoyé lorsque le réseau que vous essayez d’utiliser nécessite une forme d’authentification avant d’envoyer votre requête au serveur. Par exemple, vous devrez peut-être accepter les conditions générales d’un hotspot Wi-Fi public.
+# 521 : « Web server is down ». L’erreur 521 est un message d’erreur spécifique à Cloudflare. Cela signifie que votre navigateur web a pu se connecter avec succès à Cloudflare, mais que Cloudflare n’a pas pu se connecter au serveur web d’origine.
+# 525 : L’erreur 525 signifie que « Handshake SSL » entre un domaine utilisant Cloudflare et le serveur web d’origine a échoué. Si vous rencontrez des problèmes, il existe cinq méthodes pour tenter de corriger facilement l’erreur 525.
